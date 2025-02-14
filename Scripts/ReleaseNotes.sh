@@ -15,7 +15,7 @@ if [ -z "$REPO_BASE_URL" ]; then
   >&2 echo '❌ Failed to fetch repository url'; exit 1
 fi
 
-PREVIOUS_TAG_NAME="$(gh repo view --json latestRelease --jq '.tagName')"
+PREVIOUS_TAG_NAME="$(gh repo view --json latestRelease --jq '.latestRelease.tagName')"
 if [ -n "$PREVIOUS_TAG_NAME" ]; then
   CHANGELOG_PATH="compare/$PREVIOUS_TAG_NAME...$TAG_NAME"
 else
