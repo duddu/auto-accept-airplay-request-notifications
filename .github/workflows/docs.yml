@@ -1,19 +1,19 @@
-name: Deploy documentation to Pages
+name: Deploy docs to Pages
 
 on:
   push:
     branches:
-      - $default-branch
+      - latest
   workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: docs
   cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write
+  pages: write
 
 defaults:
   run:
@@ -23,7 +23,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      NODE_VERSION: '22'
+      NODE_VERSION: 22
+      DOCS_DIR: ./Docs
     steps:
       - uses: actions/checkout@v4
       - name: Setup Node.js
@@ -31,18 +32,19 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
+          cache-dependency-path: ${{ env.DOCS_DIR }}/package-lock.json
       - name: Install dependencies
-        working-directory: Docs
-        run: npm ci
-      - name: Build documentation site
-        working-directory: Docs
+        working-directory: ${{ env.DOCS_DIR }}
+        run: npm clean-install
+      - name: Build VuePress site
+        working-directory: ${{ env.DOCS_DIR }}
         run: npm run build
-      - name: Setup Pages
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v5  
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./Docs/.vuepress/dist
+          path: ${{ env.DOCS_DIR }}/.vuepress/dist
 
   deploy:
     runs-on: ubuntu-latest
