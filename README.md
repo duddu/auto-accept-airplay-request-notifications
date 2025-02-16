@@ -1,5 +1,6 @@
 # (Auto) Accept AirPlay Requests
 
+<!-- #region content -->
 <picture>
   <source media="(min-width: 880px)" srcset="https://raw.githubusercontent.com/duddu/auto-accept-airplay-requests/refs/heads/latest/Docs/assets/airplay-notification.png 2x" />
   <img align="right" alt="AirPlay notification alert" src="https://raw.githubusercontent.com/duddu/auto-accept-airplay-requests/refs/heads/latest/Docs/assets/empty.png" />
@@ -80,3 +81,4 @@ Run the following command from your terminal to live-stream all logs emitted by 
 ```sh
 log stream --predicate 'subsystem CONTAINS "dev.duddu.AcceptAirPlayRequests"' --level debug
 ```
+<!-- #endregion content -->

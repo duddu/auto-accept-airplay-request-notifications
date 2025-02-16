@@ -1,0 +1,51 @@
+{
+  "name": "(Auto) Accept AirPlay Requests",
+  "short_name": "Accept AirPlay Requests",
+  "description": "Allow other devices to AirPlay to your Mac without needing to manually accept each notification alert.",
+  "start_url": "https://auto-accept-airplay-requests.duddu.dev",
+  "display": "standalone",
+  "background_color": "#1b1b1f",
+  "theme_color": "#8b65c2",
+  "icons": [
+    {
+      "src": "/images/icons/android-icon-36x36.png",
+      "sizes": "36x36",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icons/android-icon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icons/android-icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icons/android-icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icons/android-icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icons/android-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icons/android-icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icons/android-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
