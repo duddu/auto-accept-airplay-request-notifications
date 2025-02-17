@@ -73,7 +73,7 @@ RELEASE_NOTES="$(bash "$SCRIPTS_DIR/ReleaseNotes.sh")"
 tar -jcf "$EXPORT_PATH/$ASSET_BASE_NAME.zip" -C"$EXPORT_PATH" "$PRODUCT_NAME.app"
 tar -zcf "$EXPORT_PATH/$ASSET_BASE_NAME.tar.gz" -C"$EXPORT_PATH" "$PRODUCT_NAME.app"
 git add "$PROJECT_ROOT/Config.xcconfig"
-git commit -S -m "chore: bump version to $VERSION [skip ci]"
+git commit -S -m "chore: bump version to $VERSION"
 git push -q
 gh release create "$TAG_NAME" -t "$TAG_NAME" \
   --notes "$RELEASE_NOTES" \
