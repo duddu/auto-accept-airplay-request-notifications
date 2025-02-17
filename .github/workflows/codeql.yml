@@ -1,0 +1,63 @@
+name: Static Code Analysis
+
+on:
+  push:
+    branches:
+      - latest
+  pull_request:
+    branches:
+      - latest
+
+defaults:
+  run:
+    shell: bash
+  
+jobs:
+  codeql:
+    name: CodeQL (${{ matrix.language }})
+    runs-on: ${{ (matrix.language == 'Swift' && 'macos-latest') || 'ubuntu-latest' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: Swift
+            build-mode: manual
+          - language: TypeScript
+            build-mode: none
+          - language: Actions
+            build-mode: none
+    concurrency:
+      group: CodeQL-${{ matrix.language }}
+      cancel-in-progress: true
+    timeout-minutes: 30
+    permissions:
+      security-events: write
+      packages: read
+      actions: read
+      contents: read
+    env:
+      SWIFT_VERSION: '6.0.0'
+      SWIFT_PACKAGE: Accept AirPlay Requests
+    steps:
+      - uses: actions/checkout@v4
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
+          trap-caching: true
+          dependency-caching: true
+          config: |
+            queries:
+              - uses: security-and-quality
+            paths:
+              - '**/*'
+      - if: matrix.language == 'Swift'
+        uses: swift-actions/setup-swift@d4537ff835c9778c934e48f78639e270edd5839e
+        with:
+          swift-version: ${{ env.SWIFT_VERSION }}
+      - if: matrix.language == 'Swift'
+        name: Build Swift Package
+        run: swift build --package-path '${{ env.SWIFT_PACKAGE }}'
+      - uses: github/codeql-action/analyze@v3
+        with:
+          category: '/lang:${{ matrix.language }}'

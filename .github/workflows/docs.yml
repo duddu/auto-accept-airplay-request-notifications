@@ -1,4 +1,4 @@
-name: Deploy docs to Pages
+name: Deploy Documentation
 
 on:
   push:
@@ -10,18 +10,16 @@ concurrency:
   group: docs
   cancel-in-progress: false
 
-permissions:
-  contents: read
-  id-token: write
-  pages: write
-
-defaults:
-  run:
-    shell: bash
-
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      pages: write
+    defaults:
+      run:
+        shell: bash
     env:
       NODE_VERSION: 22
       DOCS_DIR: ./Docs
