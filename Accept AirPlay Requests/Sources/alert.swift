@@ -51,15 +51,15 @@ public struct AARAlert {
 }
 
 private final class AARAlertDelegate: NSObject, NSAlertDelegate, AARLoggable {
-  private let readmeUrlStr = "https://github.com/duddu/auto-accept-airplay-requests#readme"
+  private let docsUrlStr = "https://auto-accept-airplay-requests.duddu.dev/#get-started"
 
   public func alertShowHelp(_: NSAlert) -> Bool {
     logger.debug("alert show help")
 
-    if let readmeUrl = URL(string: readmeUrlStr) {
-      logger.debug("opening readme url")
+    if let docsUrl = URL(string: docsUrlStr) {
+      logger.debug("opening docs url")
 
-      NSWorkspace.shared.open(readmeUrl)
+      NSWorkspace.shared.open(docsUrl)
     }
 
     return true
