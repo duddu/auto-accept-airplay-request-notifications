@@ -7,19 +7,22 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: docs
+  group: vuepress
   cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write
+  pages: write
+
+defaults:
+  run:
+    shell: bash
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
-      pages: write
-    defaults:
-      run:
-        shell: bash
+    timeout-minutes: 15
     env:
       NODE_VERSION: 22
       DOCS_DIR: ./Docs
@@ -31,15 +34,15 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: npm
           cache-dependency-path: ${{ env.DOCS_DIR }}/package-lock.json
-      - name: Install dependencies
+      - name: Install npm dependencies
         working-directory: ${{ env.DOCS_DIR }}
         run: npm clean-install
-      - name: Build VuePress site
+      - name: Build VuePress static site
         working-directory: ${{ env.DOCS_DIR }}
         run: npm run build
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5  
-      - name: Upload artifact
+      - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ${{ env.DOCS_DIR }}/.vuepress/dist
@@ -49,8 +52,8 @@ jobs:
     needs: build
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deploy-pages.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - name: Deploy artifact to GitHub Pages
+        id: deploy-pages
         uses: actions/deploy-pages@v4

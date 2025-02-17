@@ -8,13 +8,13 @@ import meta from './meta'
 
 export default defineUserConfig({
   lang: 'en-US',
-  title: '(Auto) Accept AirPlay Requests',
+  title: meta.APP_TITLE,
   theme: defaultTheme({
     hostname: meta.DOCS_URL,
     repo: meta.REPO_URL,
-    docsDir: 'Docs',
+    docsDir: meta.DOCS_DIR,
     logo: '/images/logo.png',
-    logoAlt: 'Accept AirPlay Requests',
+    logoAlt: meta.APP_NAME,
     navbar: [
       {
         text: `Download`,
@@ -42,9 +42,9 @@ export default defineUserConfig({
     ['link', { rel: 'icon', type: 'image/png', sizes: '144x144', href: '/images/icons/android-icon-144x144.png' }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '192x192' , href: '/images/icons/android-icon-192x192.png' }],
     ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
-    ['meta', { name: 'apple-mobile-web-app-title', content: 'Accept AirPlay Requests' }],
+    ['meta', { name: 'apple-mobile-web-app-title', content: meta.APP_NAME }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
-    ['meta', { name: 'application-name', content: 'Accept AirPlay Requests' }],
+    ['meta', { name: 'application-name', content: meta.APP_NAME }],
     ['meta', { name: 'msapplication-TileColor', content: '#8b65c2' }],
     ['meta', { name: 'msapplication-TileImage', content: '/images/icons/ms-icon-144x144.png' }],
     ['meta', { name: 'theme-color', content: '#8b65c2' }],
