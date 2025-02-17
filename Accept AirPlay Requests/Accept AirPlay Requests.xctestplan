@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "6D52F75E-1169-464A-9936-F23C69299CC5",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Accept AirPlay Requests",
+      "identifier" : "Accept AirPlay Requests",
+      "name" : "Accept AirPlay Requests"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Accept AirPlay Requests",
+        "identifier" : "Accept AirPlay Requests Tests",
+        "name" : "Accept AirPlay Requests Tests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D2AB05D2D63EC7800B661E5 /* Accept AirPlay Requests in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D2AB05C2D63EC7800B661E5 /* Accept AirPlay Requests */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		4D54FB262D33847B009C5A1E /* BundleIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4D54FB252D33847B009C5A1E /* BundleIcon.icns */; };
-		4D74AC792CA37E120013FA58 /* Accept AirPlay Requests in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D74AC782CA37E120013FA58 /* Accept AirPlay Requests */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		4D74AC7C2CA389B70013FA58 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 4D74AC7A2CA389B70013FA58 /* LICENSE */; };
 		4D74AC7D2CA389B70013FA58 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4D74AC7B2CA389B70013FA58 /* README.md */; };
 /* End PBXBuildFile section */
@@ -29,17 +29,18 @@
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
-				4D74AC792CA37E120013FA58 /* Accept AirPlay Requests in CopyFiles */,
+				4D2AB05D2D63EC7800B661E5 /* Accept AirPlay Requests in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4D1E6D942D63F2C500AAC3E9 /* Accept AirPlay Requests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Accept AirPlay Requests.xctestplan"; path = "Accept AirPlay Requests/Accept AirPlay Requests.xctestplan"; sourceTree = "<group>"; };
+		4D2AB05C2D63EC7800B661E5 /* Accept AirPlay Requests */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = "Accept AirPlay Requests"; path = "DerivedData/Accept AirPlay Requests/Build/Products/Release/Accept AirPlay Requests"; sourceTree = "<group>"; };
 		4D54FB1C2D33847B009C5A1E /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		4D54FB202D33847B009C5A1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4D54FB252D33847B009C5A1E /* BundleIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = BundleIcon.icns; sourceTree = "<group>"; };
-		4D74AC782CA37E120013FA58 /* Accept AirPlay Requests */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = "Accept AirPlay Requests"; path = "DerivedData/Accept AirPlay Requests/Build/Products/Release/Accept AirPlay Requests"; sourceTree = "<group>"; };
 		4D74AC7A2CA389B70013FA58 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		4D74AC7B2CA389B70013FA58 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4D9EC9612C9B5D7C00D8B522 /* Accept AirPlay Requests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Accept AirPlay Requests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,7 +111,6 @@
 		4D9EC9562C9B5D6000D8B522 = {
 			isa = PBXGroup;
 			children = (
-				4D74AC782CA37E120013FA58 /* Accept AirPlay Requests */,
 				4D9EC9662C9B5D9B00D8B522 /* Accept AirPlay Requests */,
 				4D54FB402D3430D1009C5A1E /* Scripts */,
 				4DDD007A2D31DC42003D7C28 /* Service */,
@@ -127,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				4D9EC9612C9B5D7C00D8B522 /* Accept AirPlay Requests.app */,
+				4D2AB05C2D63EC7800B661E5 /* Accept AirPlay Requests */,
+				4D1E6D942D63F2C500AAC3E9 /* Accept AirPlay Requests.xctestplan */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -147,7 +149,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				4D99B2922CA2E35100E7EC6F /* PBXTargetDependency */,
+				4D2AB05B2D63EBDE00B661E5 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				4D54FB402D3430D1009C5A1E /* Scripts */,
@@ -222,9 +224,9 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4D99B2922CA2E35100E7EC6F /* PBXTargetDependency */ = {
+		4D2AB05B2D63EBDE00B661E5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = 4D99B2912CA2E35100E7EC6F /* Accept AirPlay Requests */;
+			productRef = 4D2AB05A2D63EBDE00B661E5 /* Accept AirPlay Requests */;
 		};
 /* End PBXTargetDependency section */
 
@@ -513,7 +515,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4D99B2912CA2E35100E7EC6F /* Accept AirPlay Requests */ = {
+		4D2AB05A2D63EBDE00B661E5 /* Accept AirPlay Requests */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "Accept AirPlay Requests";
 		};
