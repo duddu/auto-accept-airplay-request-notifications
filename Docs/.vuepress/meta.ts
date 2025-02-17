@@ -8,7 +8,7 @@ const xcodeConfigKeys = ['AAR_VERSION', 'AAR_BUILD_NUMBER'] as const
 type XcodeConfig = Readonly<Record<(typeof xcodeConfigKeys)[number], string>>
 
 const getXcodeConfig = (): XcodeConfig => {
-  const file = fs.readFileSync(require.resolve('../../../Config.xcconfig'))
+  const file = fs.readFileSync(require.resolve('../../Config.xcconfig'))
   const lines = file.toString().split('\n')
   const map = lines.reduce((map, line) => {
     const [key, value] = line.split('=').map(substr => substr.trim())
@@ -25,4 +25,8 @@ const getXcodeConfig = (): XcodeConfig => {
   return map
 }
 
-export const { AAR_VERSION, AAR_BUILD_NUMBER } = getXcodeConfig()
+export default {
+  ...getXcodeConfig(),
+  DOCS_URL: 'https://auto-accept-airplay-requests.duddu.dev',
+  REPO_URL: 'https://github.com/duddu/auto-accept-airplay-requests',
+}

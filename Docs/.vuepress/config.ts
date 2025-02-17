@@ -1,25 +1,29 @@
-import { viteBundler } from '@vuepress/bundler-vite'
+import { webpackBundler } from '@vuepress/bundler-webpack'
 import { markdownHintPlugin } from '@vuepress/plugin-markdown-hint'
 import { markdownIncludePlugin } from '@vuepress/plugin-markdown-include'
 import { defaultTheme } from '@vuepress/theme-default'
 import { defineUserConfig } from 'vuepress/cli'
 
-import { AAR_VERSION } from './utils/meta'
+import meta from './meta'
 
 export default defineUserConfig({
   lang: 'en-US',
   title: '(Auto) Accept AirPlay Requests',
-  description: 'Seamless AirPlay streaming to your Mac - Automatically accept AirPlay requests from any device, no need to manually approve each notification alert.',
   theme: defaultTheme({
-    hostname: 'https://auto-accept-airplay-requests.duddu.dev',
-    repo: 'duddu/auto-accept-airplay-requests',
+    hostname: meta.DOCS_URL,
+    repo: meta.REPO_URL,
     docsDir: 'Docs',
     logo: '/images/logo.png',
     logoAlt: 'Accept AirPlay Requests',
     navbar: [
-      { text: `v${AAR_VERSION}`, link: `https://github.com/duddu/auto-accept-airplay-requests/releases/v${AAR_VERSION}` },
+      {
+        text: `Download`,
+        link: `${meta.REPO_URL}/releases/tag/v${meta.AAR_VERSION}`
+      },
     ],
-    externalLinkIcon: false,
+    themePlugins: {
+      mediumZoom: false,
+    },
   }),
   head: [
     ['link', { rel: 'apple-touch-icon', sizes: '57x57', href: '/images/icons/apple-icon-57x57.png' }],
@@ -31,7 +35,7 @@ export default defineUserConfig({
     ['link', { rel: 'apple-touch-icon', sizes: '144x144', href: '/images/icons/apple-icon-144x144.png' }],
     ['link', { rel: 'apple-touch-icon', sizes: '152x152', href: '/images/icons/apple-icon-152x152.png' }],
     ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/images/icons/apple-icon-180x180.png' }],
-    ['link', { rel: 'canonical', href: 'https://auto-accept-airplay-requests.duddu.dev' }],
+    ['link', { rel: 'canonical', href: meta.DOCS_URL }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/images/icons/favicon-16x16.png' }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/images/icons/favicon-32x32.png' }],
     ['link', { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/images/icons/favicon-96x96.png' }],
@@ -49,5 +53,14 @@ export default defineUserConfig({
     markdownHintPlugin({ alert: true }),
     markdownIncludePlugin({ useComment: false }),
   ],
-  bundler: viteBundler(),
+  extendsMarkdown: (md) => {
+    const _render = md.render
+    md.render = (src, ...args) => {
+      Object.entries(meta).forEach(([key, value]) => {
+        src = src.replace(new RegExp(`%${key}%`, 'g'), value)
+      })
+      return _render.apply(md, [src, ...args])
+    }
+  },
+  bundler: webpackBundler(),
 })

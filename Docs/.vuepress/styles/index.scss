@@ -12,14 +12,21 @@
     max-width: 40rem;
   }
 
-  .vp-hero-action-button.secondary:hover {
-    color: var(--vp-c-accent-hover);
-    border-color: var(--vp-c-accent-hover);
+  .vp-hero-action-button {
+    &.external-link::after {
+      display: none;
+    }
+
+    &.secondary:hover {
+      color: var(--vp-c-accent-hover);
+      border-color: var(--vp-c-accent-hover);
+    }
   }
 
   .vp-home [vp-content] {
-    padding-top: 2rem;
-    padding-bottom: 3.325rem;
+    border-top: 1px solid var(--vp-c-gutter);
+    margin: 2.5rem 0 1.5rem;
+    padding: 1.2rem 0;
   }
 
   a.header-anchor::before {
@@ -28,7 +35,11 @@
   }
 
   img[align="right"] {
-    padding-left: 1.5rem;
+    padding-left: 2rem;
+  }
+
+  h3 + picture img[align="right"] {
+    margin-block-start: 1em;
   }
 
   @media (min-width: 1070px) {
