@@ -23,5 +23,8 @@
     "sass-loader": "^16.0.5",
     "vue": "^3.5.13",
     "vuepress": "2.0.0-rc.19"
+  },
+  "peerDependencies": {
+    "esbuild": ">=0.25.0"
   }
 }
